@@ -20,19 +20,19 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 class Agent():
     """Interacts with and learns from the environment."""
 
-    def __init__(self, state_size, action_size, seed=0, mode="DQN"):
+    def __init__(self, state_size, action_size, seed=0, mode = 'DQN'):
         """Initialize an Agent object.
         
         Params
         ======
             state_size (int): dimension of each state
             action_size (int): dimension of each action
-            seed (int): random seed, default is 0
+            seed (int): random seed
             mode: Double_DQN or DQN, default is DQN
         """
         self.state_size = state_size
         self.action_size = action_size
-        self.seed = random.seed(seed) 
+        self.seed = random.seed(seed)
 
         # Q-Network
         self.qnetwork_local = QNetwork(state_size, action_size, seed).to(device)
@@ -45,15 +45,13 @@ class Agent():
         # Initialize time step (for updating every UPDATE_EVERY steps)
         self.t_step = 0
         # Record training steps
-        self.train_step = 0
-        
+        self.train_steps = 0
     
     def step(self, state, action, reward, next_state, done):
         # Save experience in replay memory
         self.memory.add(state, action, reward, next_state, done)
-        
-        # Update number of training steps overall
-        self.train_step = self.train_step + 1
+        # update number of steps overall
+        self.train_steps = self.train_steps + 1
         
         # Learn every UPDATE_EVERY time steps.
         self.t_step = (self.t_step + 1) % UPDATE_EVERY
@@ -97,12 +95,12 @@ class Agent():
         if self.mode == 'Double_DQN':
             # derive Q_targets from mix of target and local Q
             Q_local_argmax = self.qnetwork_local(next_states).detach().max(1)[1].unsqueeze(1)
-            Q_targets_next = self.qnetwork_target(next_states).gather(1, Q_local_argmax)
+            Q_targets_next = self.qnetwork_target(next_states).gather(1, Q_local_argmax)  
         # else mode is standard DQN
-        else: 
+        else:
             # Get max predicted Q values (for next states) from target model
             Q_targets_next = self.qnetwork_target(next_states).detach().max(1)[0].unsqueeze(1)
-                
+        
         # Compute Q targets for current states 
         Q_targets = rewards + (gamma * Q_targets_next * (1 - dones))
 
