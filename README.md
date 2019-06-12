@@ -4,6 +4,8 @@
 
 # Project 1: Navigation
 
+[![Project passed](https://img.shields.io/badge/project-passed-success.svg)](https://img.shields.io/badge/project-passed-success.svg)
+
 ### Introduction
 
 For this project, I have trained an agent to navigate (and collect bananas!) in a large, square world. The orginal setup of this project is to be found [here](https://github.com/udacity/deep-reinforcement-learning/tree/master/p1_navigation).
