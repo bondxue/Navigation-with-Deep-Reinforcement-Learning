@@ -32,7 +32,7 @@ The task is episodic, and in order to solve the environment, your agent must get
 
     (_For AWS_) If you'd like to train the agent on AWS (and have not [enabled a virtual screen](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-on-Amazon-Web-Service.md)), then please use [this link](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux_NoVis.zip) to obtain the environment.
 
-2. Place the file in the DRLND GitHub repository, in the `p1_navigation/` folder, and unzip (or decompress) the file. 
+2. Place the file in the [DRLND GitHub repository](https://github.com/udacity/deep-reinforcement-learning), in the `p1_navigation/` folder, and unzip (or decompress) the file. 
 
 3. The Python environment setup can be found [here](https://github.com/udacity/deep-reinforcement-learning#dependencies).
 
@@ -40,7 +40,7 @@ The task is episodic, and in order to solve the environment, your agent must get
 
 + `Navigation.ipynb`- contains the code to set up the environment and the outer episode iteration to solve the reinforcement problem. Our solution uses a (double) deep Q-learning network (only standard feedforward layers) and experience replay.
 
-+ `dqn_agent.py` - contains the **Agent** and **ReplayBuffer** classes. The **Agent** class can choose mode between a *standard DQN* or a *Double DQN*. 
++ `dqn_agent.py` - contains the **Agent** and **ReplayBuffer** classes. The **Agent** class can choose mode between a *standard DQN* or a *Double DQN*, and **ReplayBuffer** is used as the replay memory to store and recall experience tuples.
 
 + `model.py` - contains the **QNetwork** class which is to structure our deep Q-network architecture. 
 
